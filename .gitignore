@@ -1,2 +1,5 @@
 build/
 test/
+build.xml
+manifest.mf
+/dist/

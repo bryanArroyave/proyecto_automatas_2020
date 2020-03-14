@@ -24,10 +24,6 @@ public class principal extends javax.swing.JFrame {
     Automata instrumento2;
     Automata instrumento3;
 
-    String[] regla1;
-    String[] regla2;
-    String[] regla3;
-
     int posibilidades1;
     int posibilidades2;
     int posibilidades3;
@@ -37,13 +33,13 @@ public class principal extends javax.swing.JFrame {
         this.configurarFrame();
         this.llenarNumeroTranciciones();
         this.ocultarPestañas();
-
     }
 
     @SuppressWarnings("unchecked")
     private void desabilitar_configuracion2() {
 
     }
+    // <editor-fold defaultstate="collapsed" desc="todos los aceptar">  
 
     private void aceptar1() {
 
@@ -77,6 +73,8 @@ public class principal extends javax.swing.JFrame {
         btn_aceptar2_3.setEnabled(true);
         txt_regla_3.setEnabled(true);
     }
+
+    // </editor-fold> 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,6 +126,9 @@ public class principal extends javax.swing.JFrame {
         cadenaEstados_3 = new javax.swing.JPanel();
         btn_aceptar3_3 = new javax.swing.JButton();
         automatas = new javax.swing.JPanel();
+        panelDibujo1 = new GUI.PanelDibujo();
+        panelDibujo2 = new GUI.PanelDibujo();
+        panelDibujo3 = new GUI.PanelDibujo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
@@ -287,9 +288,9 @@ public class principal extends javax.swing.JFrame {
         configuracion1Layout.setVerticalGroup(
             configuracion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configuracion1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(automata1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("configuración1", configuracion1);
@@ -449,9 +450,9 @@ public class principal extends javax.swing.JFrame {
         configuracion2Layout.setVerticalGroup(
             configuracion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configuracion2Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addComponent(automata4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("configuración2", configuracion2);
@@ -611,22 +612,70 @@ public class principal extends javax.swing.JFrame {
         configuracion3Layout.setVerticalGroup(
             configuracion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configuracion3Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(automata3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("configuración3", configuracion3);
+
+        automatas.setBackground(new java.awt.Color(153, 51, 255));
+
+        javax.swing.GroupLayout panelDibujo1Layout = new javax.swing.GroupLayout(panelDibujo1);
+        panelDibujo1.setLayout(panelDibujo1Layout);
+        panelDibujo1Layout.setHorizontalGroup(
+            panelDibujo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+        panelDibujo1Layout.setVerticalGroup(
+            panelDibujo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelDibujo2Layout = new javax.swing.GroupLayout(panelDibujo2);
+        panelDibujo2.setLayout(panelDibujo2Layout);
+        panelDibujo2Layout.setHorizontalGroup(
+            panelDibujo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+        panelDibujo2Layout.setVerticalGroup(
+            panelDibujo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelDibujo3Layout = new javax.swing.GroupLayout(panelDibujo3);
+        panelDibujo3.setLayout(panelDibujo3Layout);
+        panelDibujo3Layout.setHorizontalGroup(
+            panelDibujo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+        panelDibujo3Layout.setVerticalGroup(
+            panelDibujo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout automatasLayout = new javax.swing.GroupLayout(automatas);
         automatas.setLayout(automatasLayout);
         automatasLayout.setHorizontalGroup(
             automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1064, Short.MAX_VALUE)
+            .addGroup(automatasLayout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addComponent(panelDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelDibujo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelDibujo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         automatasLayout.setVerticalGroup(
             automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(automatasLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelDibujo3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDibujo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDibujo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("automatas", automatas);
@@ -643,13 +692,14 @@ public class principal extends javax.swing.JFrame {
         final int posibilidades = calcularPosibilidades(numeroEstado);
         llenarRegla(numeroEstado, posibilidades);
 
-        llenarPosiblesEstados(numeroEstado, posibilidades, regla1);
-        System.out.println(numeroEstado + "^" + posibilidades);
         aceptar1();
-        lbl_regla_1.setText("ingrese un numero desde 0 hasta " + ((int) (Math.pow(numeroEstado, posibilidades) - 1)));
-        this.posibilidades1 = (int) (Math.pow(numeroEstado, posibilidades)) - 1;
+        lbl_regla_1.setText("ingrese un numero desde 0 hasta " + ((int) (Math.pow(numeroEstado, 8) - 1)));
+        this.posibilidades1 = (int) (Math.pow(numeroEstado, 8)) - 1;
 
         instrumento1 = new Automata(instrumento, numeroEstado, numeroTranciciones, posibilidades);
+        instrumento1.d = llenarPosiblesEstados(numeroEstado, posibilidades);
+
+       
     }//GEN-LAST:event_btn_aceptar_1ActionPerformed
 
     private void txt_regla_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_regla_1ActionPerformed
@@ -701,7 +751,11 @@ public class principal extends javax.swing.JFrame {
 
     }
     private void btn_aceptar3_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptar3_1ActionPerformed
+        instrumento1.calcularVectorInicial();
+        JOptionPane.showMessageDialog(this, instrumento1.vectorInicial);
         cambiarEscenario(E_CONFIGURACION_2);
+
+        instrumento1.recorrerD();
     }//GEN-LAST:event_btn_aceptar3_1ActionPerformed
 
     private void btn_aceptar_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptar_2ActionPerformed
@@ -711,17 +765,17 @@ public class principal extends javax.swing.JFrame {
         final int posibilidades = calcularPosibilidades(numeroEstado);
         llenarRegla(numeroEstado, posibilidades);
 
-        llenarPosiblesEstados(numeroEstado, posibilidades, regla2);
-        System.out.println(numeroEstado + "^" + posibilidades);
         aceptar2();
-        lbl_regla_2.setText("ingrese un numero desde 0 hasta " + ((int) (Math.pow(numeroEstado, posibilidades) - 1)));
-        this.posibilidades2 = (int) (Math.pow(numeroEstado, posibilidades)) - 1;
+        lbl_regla_2.setText("ingrese un numero desde 0 hasta " + ((int) (Math.pow(numeroEstado, 8) - 1)));
+        this.posibilidades2 = (int) (Math.pow(numeroEstado, 8)) - 1;
 
         instrumento2 = new Automata(instrumento, numeroEstado, numeroTranciciones, posibilidades);
+        instrumento2.d = llenarPosiblesEstados(numeroEstado, posibilidades);
+
     }//GEN-LAST:event_btn_aceptar_2ActionPerformed
 
     private void txt_regla_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_regla_2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_regla_2ActionPerformed
 
     private void btn_aceptar2_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptar2_2ActionPerformed
@@ -748,6 +802,8 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_aceptar2_2ActionPerformed
 
     private void btn_aceptar3_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptar3_2ActionPerformed
+        instrumento2.calcularVectorInicial();
+        instrumento2.recorrerD();
         cambiarEscenario(E_CONFIGURACION_3);
     }//GEN-LAST:event_btn_aceptar3_2ActionPerformed
 
@@ -758,15 +814,14 @@ public class principal extends javax.swing.JFrame {
         final int posibilidades = calcularPosibilidades(numeroEstado);
         llenarRegla(numeroEstado, posibilidades);
 
-        llenarPosiblesEstados(numeroEstado, posibilidades, regla3);
-
         aceptar3();
 
-        System.out.println(numeroEstado + "^" + posibilidades);
-        lbl_regla_3.setText("ingrese un numero desde 0 hasta " + ((int) (Math.pow(numeroEstado, posibilidades) - 1)));
-        this.posibilidades3 = (int) (Math.pow(numeroEstado, posibilidades)) - 1;
+        lbl_regla_3.setText("ingrese un numero desde 0 hasta " + ((int) (Math.pow(numeroEstado, 8) - 1)));
+        this.posibilidades3 = (int) (Math.pow(numeroEstado, 8)) - 1;
 
         instrumento3 = new Automata(instrumento, numeroEstado, numeroTranciciones, posibilidades);
+        instrumento3.d = llenarPosiblesEstados(numeroEstado, posibilidades);
+
     }//GEN-LAST:event_btn_aceptar_3ActionPerformed
 
     private void txt_regla_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_regla_3ActionPerformed
@@ -783,7 +838,7 @@ public class principal extends javax.swing.JFrame {
             this.cadenaEstados_3.repaint();
 
             btn_aceptar2_3.setEnabled(false);
-            txt_regla_2.setEnabled(false);
+            txt_regla_3.setEnabled(false);
             cadenaEstados_3.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -797,7 +852,14 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_aceptar2_3ActionPerformed
 
     private void btn_aceptar3_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptar3_3ActionPerformed
-        cambiarEscenario(E_CONFIGURACION_3);
+        cambiarEscenario(E_CONFIGURACION_4);
+        instrumento3.calcularVectorInicial();
+
+        panelDibujo1.instrumento = instrumento1;
+        panelDibujo2.instrumento = instrumento2;
+        panelDibujo3.instrumento = instrumento3;
+        instrumento3.recorrerD();
+
     }//GEN-LAST:event_btn_aceptar3_3ActionPerformed
 
     private void capturarRegla(JTextField txt_regla_1, int posibilidades, Automata instrumento) throws Exception {
@@ -818,13 +880,15 @@ public class principal extends javax.swing.JFrame {
         }
     }
 
-    private void llenarPosiblesEstados(int numeroEstado, int posibilidades, String[] regla) {
-        regla = new String[posibilidades];
+    private String[] llenarPosiblesEstados(int numeroEstado, int posibilidades) {
+        String[] regla = new String[posibilidades];
         String formatoDeseado = "000";
         DecimalFormat formateador = new DecimalFormat(formatoDeseado);
         for (int i = 0; i < posibilidades; i++) {
             regla[i] = formateador.format(convertirBase(numeroEstado, i));
         }
+
+        return regla;
     }
 
     private int convertirBase(int base, int numero) {
@@ -975,6 +1039,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_regla_1;
     private javax.swing.JLabel lbl_regla_2;
     private javax.swing.JLabel lbl_regla_3;
+    private GUI.PanelDibujo panelDibujo1;
+    private GUI.PanelDibujo panelDibujo2;
+    private GUI.PanelDibujo panelDibujo3;
     private javax.swing.JTextField txt_regla1;
     private javax.swing.JTextField txt_regla_1;
     private javax.swing.JTextField txt_regla_2;
