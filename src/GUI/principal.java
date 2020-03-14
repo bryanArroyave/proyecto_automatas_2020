@@ -1,6 +1,7 @@
 package GUI;
 
 import Logica.Automata;
+import java.awt.Color;
 
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -139,6 +140,21 @@ public class principal extends javax.swing.JFrame implements Runnable {
         panelDibujo3 = new GUI.PanelDibujo();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        sp_1 = new javax.swing.JSpinner();
+        sp_2 = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
+        sp_3 = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
+        mute_1 = new javax.swing.JButton();
+        mute_2 = new javax.swing.JButton();
+        mute_3 = new javax.swing.JButton();
+        txtNota_1 = new javax.swing.JLabel();
+        txtNota_2 = new javax.swing.JLabel();
+        txtNota_3 = new javax.swing.JLabel();
+        lb_instrumento_1 = new javax.swing.JLabel();
+        lb_instrumento_3 = new javax.swing.JLabel();
+        lb_instrumento_2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
@@ -150,7 +166,7 @@ public class principal extends javax.swing.JFrame implements Runnable {
         jLabel1.setText("Instrumento: ");
 
         cb_instrumento_1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cb_instrumento_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_instrumento_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Basoon", "Clarinete", "Flauta", "Guitarra", "Saxofón", "Tambor", "Tuba", "Violin", "piano", "trompeta" }));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("N° estados:");
@@ -312,7 +328,12 @@ public class principal extends javax.swing.JFrame implements Runnable {
         jLabel13.setText("Instrumento: ");
 
         cb_instrumento_2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cb_instrumento_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_instrumento_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Basoon", "Clarinete", "Flauta", "Guitarra", "Saxofón", "Tambor", "Tuba", "Violin", "piano", "trompeta" }));
+        cb_instrumento_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_instrumento_2ActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setText("N° estados:");
@@ -474,7 +495,7 @@ public class principal extends javax.swing.JFrame implements Runnable {
         jLabel9.setText("Instrumento: ");
 
         cb_instrumento_3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cb_instrumento_3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_instrumento_3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Basoon", "Clarinete", "Flauta", "Guitarra", "Saxofón", "Tambor", "Tuba", "Violin", "piano", "trompeta" }));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("N° estados:");
@@ -639,7 +660,7 @@ public class principal extends javax.swing.JFrame implements Runnable {
         );
         panelDibujo1Layout.setVerticalGroup(
             panelDibujo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelDibujo2Layout = new javax.swing.GroupLayout(panelDibujo2);
@@ -650,7 +671,7 @@ public class principal extends javax.swing.JFrame implements Runnable {
         );
         panelDibujo2Layout.setVerticalGroup(
             panelDibujo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelDibujo3Layout = new javax.swing.GroupLayout(panelDibujo3);
@@ -664,12 +685,88 @@ public class principal extends javax.swing.JFrame implements Runnable {
             .addGap(0, 350, Short.MAX_VALUE)
         );
 
-        jButton1.setText("jButton1");
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel6.setText("Retraso:");
+
+        sp_1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        sp_1.setModel(new javax.swing.SpinnerNumberModel(100, 100, 2000, 100));
+        sp_1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sp_1StateChanged(evt);
+            }
+        });
+
+        sp_2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        sp_2.setModel(new javax.swing.SpinnerNumberModel(100, 100, 2000, 100));
+        sp_2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sp_2StateChanged(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setText("Retraso:");
+
+        sp_3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        sp_3.setModel(new javax.swing.SpinnerNumberModel(100, 100, 2000, 100));
+        sp_3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sp_3StateChanged(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setText("Retraso:");
+
+        mute_1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        mute_1.setText("Mute");
+        mute_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mute_1ActionPerformed(evt);
+            }
+        });
+
+        mute_2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        mute_2.setText("Mute");
+        mute_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mute_2ActionPerformed(evt);
+            }
+        });
+
+        mute_3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        mute_3.setText("Mute");
+        mute_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mute_3ActionPerformed(evt);
+            }
+        });
+
+        txtNota_1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtNota_1.setText("NOTA:");
+
+        txtNota_2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtNota_2.setText("NOTA:");
+
+        txtNota_3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtNota_3.setText("NOTA:");
+
+        lb_instrumento_1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lb_instrumento_1.setText("jLabel17");
+
+        lb_instrumento_3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lb_instrumento_3.setText("jLabel17");
+
+        lb_instrumento_2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lb_instrumento_2.setText("jLabel17");
 
         javax.swing.GroupLayout automatasLayout = new javax.swing.GroupLayout(automatas);
         automatas.setLayout(automatasLayout);
@@ -678,36 +775,107 @@ public class principal extends javax.swing.JFrame implements Runnable {
             .addGroup(automatasLayout.createSequentialGroup()
                 .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(automatasLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(automatasLayout.createSequentialGroup()
+                                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(automatasLayout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(sp_1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(mute_1)
+                                    .addComponent(txtNota_1))
+                                .addGap(159, 159, 159)
+                                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(automatasLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(sp_2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(mute_2)
+                                    .addComponent(txtNota_2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, automatasLayout.createSequentialGroup()
+                                        .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(automatasLayout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(sp_3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(mute_3))
+                                        .addGap(136, 136, 136))
+                                    .addGroup(automatasLayout.createSequentialGroup()
+                                        .addComponent(txtNota_3)
+                                        .addGap(65, 65, 65))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, automatasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, automatasLayout.createSequentialGroup()
                         .addContainerGap(33, Short.MAX_VALUE)
                         .addComponent(panelDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(panelDibujo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelDibujo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(automatasLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
                         .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(automatasLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(automatasLayout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(panelDibujo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_instrumento_2))
+                        .addGap(18, 18, 18)
+                        .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_instrumento_3)
+                            .addComponent(panelDibujo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
+            .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(automatasLayout.createSequentialGroup()
+                    .addGap(43, 43, 43)
+                    .addComponent(lb_instrumento_1)
+                    .addContainerGap(997, Short.MAX_VALUE)))
         );
         automatasLayout.setVerticalGroup(
             automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(automatasLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelDibujo3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDibujo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDibujo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(automatasLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(panelDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, automatasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lb_instrumento_3)
+                            .addComponent(lb_instrumento_2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelDibujo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelDibujo3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(sp_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(sp_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(sp_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mute_1)
+                    .addComponent(mute_3)
+                    .addComponent(mute_2))
+                .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(automatasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(29, 29, 29))
+                    .addGroup(automatasLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNota_1)
+                            .addComponent(txtNota_2)
+                            .addComponent(txtNota_3))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(automatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(automatasLayout.createSequentialGroup()
+                    .addGap(47, 47, 47)
+                    .addComponent(lb_instrumento_1)
+                    .addContainerGap(617, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("automatas", automatas);
@@ -896,14 +1064,57 @@ public class principal extends javax.swing.JFrame implements Runnable {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        panelDibujo1.time = 200;
-        panelDibujo2.time = 0;
-        panelDibujo3.time = 500;
-
         panelDibujo1.run = true;
         panelDibujo2.run = true;
         panelDibujo3.run = true;
+
+        jButton1.setEnabled(false);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cb_instrumento_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_instrumento_2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_instrumento_2ActionPerformed
+
+    private void sp_1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sp_1StateChanged
+        panelDibujo1.time = (int) sp_1.getValue();
+    }//GEN-LAST:event_sp_1StateChanged
+
+    private void sp_2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sp_2StateChanged
+        panelDibujo2.time = (int) sp_2.getValue();
+    }//GEN-LAST:event_sp_2StateChanged
+
+    private void sp_3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sp_3StateChanged
+        panelDibujo3.time = (int) sp_3.getValue();
+    }//GEN-LAST:event_sp_3StateChanged
+
+    private void mute_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mute_1ActionPerformed
+        panelDibujo1.mute = !panelDibujo1.mute;
+        if (panelDibujo1.mute) {
+            mute_1.setBackground(Color.RED);
+        } else {
+            mute_1.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_mute_1ActionPerformed
+
+    private void mute_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mute_2ActionPerformed
+        panelDibujo2.mute = !panelDibujo2.mute;
+        if (panelDibujo2.mute) {
+            mute_2.setBackground(Color.RED);
+        } else {
+            mute_2.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_mute_2ActionPerformed
+
+    private void mute_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mute_3ActionPerformed
+        panelDibujo3.mute = !panelDibujo3.mute;
+        if (panelDibujo3.mute) {
+            mute_3.setBackground(Color.RED);
+        } else {
+            mute_3.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_mute_3ActionPerformed
 
     private void capturarRegla(JTextField txt_regla_1, int posibilidades, Automata instrumento) throws Exception {
         int regla;
@@ -1066,14 +1277,29 @@ public class principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lb_instrumento_1;
+    private javax.swing.JLabel lb_instrumento_2;
+    private javax.swing.JLabel lb_instrumento_3;
     private javax.swing.JLabel lbl_regla_1;
     private javax.swing.JLabel lbl_regla_2;
     private javax.swing.JLabel lbl_regla_3;
+    private javax.swing.JButton mute_1;
+    private javax.swing.JButton mute_2;
+    private javax.swing.JButton mute_3;
     private GUI.PanelDibujo panelDibujo1;
     private GUI.PanelDibujo panelDibujo2;
     private GUI.PanelDibujo panelDibujo3;
+    private javax.swing.JSpinner sp_1;
+    private javax.swing.JSpinner sp_2;
+    private javax.swing.JSpinner sp_3;
+    private javax.swing.JLabel txtNota_1;
+    private javax.swing.JLabel txtNota_2;
+    private javax.swing.JLabel txtNota_3;
     private javax.swing.JTextField txt_regla_1;
     private javax.swing.JTextField txt_regla_2;
     private javax.swing.JTextField txt_regla_3;
@@ -1088,6 +1314,16 @@ public class principal extends javax.swing.JFrame implements Runnable {
                 configuracion1.setBackground(color.Retornarse());
                 configuracion2.setBackground(color.Retornarse());
                 configuracion3.setBackground(color.Retornarse());
+
+                
+                lb_instrumento_1.setText(instrumento1.instrumento);
+                lb_instrumento_2.setText(instrumento2.instrumento);
+                lb_instrumento_3.setText(instrumento3.instrumento);
+                
+                
+                txtNota_1.setText("Nota: " + instrumento1.notaActual);
+                txtNota_2.setText("Nota: " + instrumento2.notaActual);
+                txtNota_3.setText("Nota: " + instrumento3.notaActual);
             } catch (Exception e) {
             }
 

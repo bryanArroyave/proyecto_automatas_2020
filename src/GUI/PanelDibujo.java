@@ -18,6 +18,7 @@ public class PanelDibujo extends JPanel implements Runnable {
 
     public boolean run = false;
     public boolean pintar = false;
+    public boolean mute = false;
     ColorRGB color;
     public int time;
 
@@ -31,15 +32,22 @@ public class PanelDibujo extends JPanel implements Runnable {
     Automata instrumento;
     int iterador = 0;
 
-    public void cambiarSecuencia() {
+    public int calcularNota() {
+        String[] M = instrumento.Matriz;
 
-        if (iterador == instrumento.Matriz.length) {
-            iterador = 0;
-        }
-        for (int i = 0; i < instrumento.Matriz.length; i++) {
-            String vecinos = vecinos(iterador, i);
-        }
+        int suma = 0;
+        String actual = M[iterador];
 
+        while (actual.length() != 1) {
+            for (int i = 0; i < actual.length(); i++) {
+                suma += Integer.parseInt(actual.charAt(i) + "");
+            }
+            actual = suma + "";
+
+            suma = 0;
+        }
+        instrumento.actualizarNota(Integer.parseInt(actual));
+        return Integer.parseInt(actual);
     }
 
     public void run2() {
@@ -57,8 +65,16 @@ public class PanelDibujo extends JPanel implements Runnable {
         }
         //  System.out.println("final " + nueva);
         M[iterador + 1] = nueva;
+        if (!mute) {
+            sacarAudio(calcularNota());
+        }
         iterador++;
 
+    }
+
+    public void sacarAudio(int j) {
+        System.out.println(j);
+        instrumento.Sonando2[j].play();
     }
 
     public String vecinos(int i, int j) {
@@ -136,7 +152,7 @@ public class PanelDibujo extends JPanel implements Runnable {
         while (true) {
 
             try {
-                Thread.sleep(time);
+                Thread.sleep(this.time);
                 pintar = true;
             } catch (InterruptedException ex) {
 

@@ -1,5 +1,6 @@
 package Logica;
 
+import java.applet.AudioClip;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -8,19 +9,23 @@ import javax.swing.JOptionPane;
 
 public class Automata {
 
-    String instrumento;
+    public String instrumento;
     int numeroEstados;
     int numeroTrancisiones;
     int posibilidades;
     int regla;
 
     JComboBox[] Campos;
-
+    public HashMap<Integer, String> conversorNota;
     public HashMap<String, String> mapRegla;
     public String[] Matriz;
     public String[] d;
     public String vectorInicial;
     public String vectorRegla;
+
+    public AudioClip[] Sonando2;
+    public AudioClip[] Sonando;
+    public String notaActual = "NA";
 
     public Automata(String instrumento, int numeroEstados, int numeroTrancisiones, int posibilidades) {
         this.instrumento = instrumento;
@@ -28,7 +33,8 @@ public class Automata {
         this.numeroTrancisiones = numeroTrancisiones;
         this.posibilidades = posibilidades;
         this.Campos = new JComboBox[this.numeroTrancisiones];
-
+        this.Sonando = new AudioClip[numeroTrancisiones];
+        this.llenarSonando2();
         this.CrearVectorTexto();
     }
 
@@ -43,6 +49,36 @@ public class Automata {
 
     }
 
+    public void llenarSonando2() {
+        Sonando2 = new AudioClip[10];
+
+        conversorNota = new HashMap<>();
+        conversorNota.put(0, "do");
+        conversorNota.put(1, "do");
+        conversorNota.put(2, "re");
+        conversorNota.put(3, "mi");
+        conversorNota.put(4, "fa");
+        conversorNota.put(5, "sol");
+        conversorNota.put(6, "la");
+        conversorNota.put(7, "si");
+        conversorNota.put(8, "do");
+        conversorNota.put(9, "do");
+        try {
+            Sonando2[0] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+            Sonando2[1] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+            Sonando2[2] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_re" + ".wav"));
+            Sonando2[3] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_mi" + ".wav"));
+            Sonando2[4] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_fa" + ".wav"));
+            Sonando2[5] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_sol" + ".wav"));
+            Sonando2[6] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_la" + ".wav"));
+            Sonando2[7] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_si" + ".wav"));
+            Sonando2[8] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+            Sonando2[9] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se encontro el instrumento " + instrumento);
+        }
+    }
+
     public void recorrerD() {
         String reglaBase = convertirReglaBase();
 
@@ -50,6 +86,12 @@ public class Automata {
         for (int i = 0; i < d.length; i++) {
             mapRegla.put(d[i], String.valueOf(reglaBase.charAt(i)));
         }
+    }
+
+    public void actualizarNota(int actual) {
+        notaActual = conversorNota.get(actual);
+        System.out.println("actual " + actual + " cambia a " + notaActual);
+
     }
 
     public void CrearVectorTexto() {
@@ -143,7 +185,6 @@ public class Automata {
         }
         String cad = "";
         int cont = 0;
-        System.out.println(numeroEstados);
 
         baseNueva = formateador.format(Integer.parseInt(baseNueva));
         if (numeroEstados > 2) {
@@ -158,7 +199,7 @@ public class Automata {
         }
 
         baseNueva = cad + baseNueva;
-        System.out.println(baseNueva);
+
         return regla == 0 ? formatoDeseado : baseNueva;
 
     }
