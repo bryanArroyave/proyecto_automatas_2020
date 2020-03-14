@@ -5,7 +5,6 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 public class Automata {
 
@@ -17,8 +16,8 @@ public class Automata {
 
     JComboBox[] Campos;
 
-    HashMap<String, String> mapRegla;
-    String[] Matriz;
+    public HashMap<String, String> mapRegla;
+    public String[] Matriz;
     public String[] d;
     public String vectorInicial;
     public String vectorRegla;
@@ -45,20 +44,12 @@ public class Automata {
     }
 
     public void recorrerD() {
-
         String reglaBase = convertirReglaBase();
-        System.out.println("________________________________");
-         System.out.println(regla);
-        for (int i = 0; i < d.length; i++) {
-            System.out.print(d[i] + " ");
-        }
-        System.out.println("");
-        for (int i = 0; i < d.length; i++) {
-            System.out.print(" " + reglaBase.charAt(i) + "  ");
-        }
-        System.out.println("");
-        System.out.println("________________________________");
 
+        mapRegla = new HashMap<>();
+        for (int i = 0; i < d.length; i++) {
+            mapRegla.put(d[i], String.valueOf(reglaBase.charAt(i)));
+        }
     }
 
     public void CrearVectorTexto() {
@@ -91,16 +82,27 @@ public class Automata {
             }
             vectorInicial += String.valueOf(Campos[i].getSelectedItem());
         }
-
-        for (int i = 0; i < Matriz.length; i++) {
-            Matriz[i] = vectorInicial;
-        }
-
+        llenarInicial();
         vectorRegla = primeros + ultimos;
     }
 
+    public void llenarInicial() {
+        for (int i = 0; i < Matriz.length; i++) {
+            if (i == 0) {
+                Matriz[i] = vectorInicial;
+            } else {
+                String cad = "";
+                for (int j = 0; j < vectorInicial.length(); j++) {
+                    cad += "0";
+                }
+                Matriz[i] = cad;
+            }
+        }
+
+    }
+
     public void setRegla(int regla) {
-        JOptionPane.showMessageDialog(null, regla);
+
         this.regla = regla;
     }
 
@@ -123,7 +125,8 @@ public class Automata {
 
     public String convertirReglaBase() {
         String formatoDeseado = calcularFormato();
-        DecimalFormat formateador = new DecimalFormat(formatoDeseado);
+        String formato8 = "00000000";
+        DecimalFormat formateador = new DecimalFormat(formato8);
         String digitos[] = new String[numeroEstados];
 
         for (int i = 0; i < numeroEstados; i++) {
@@ -138,8 +141,26 @@ public class Automata {
             baseNueva = digitos[resto] + baseNueva;
             aux /= numeroEstados;
         }
+        String cad = "";
+        int cont = 0;
+        System.out.println(numeroEstados);
 
-        return regla == 0 ? formatoDeseado : formateador.format(Integer.parseInt(baseNueva));
+        baseNueva = formateador.format(Integer.parseInt(baseNueva));
+        if (numeroEstados > 2) {
+            for (int i = 0; i < calcularFormato().length() - 8; i++) {
+                if (cont == 8) {
+                    cont = 0;
+                }
+                cad += baseNueva.charAt(cont);
+
+                cont++;
+            }
+        }
+
+        baseNueva = cad + baseNueva;
+        System.out.println(baseNueva);
+        return regla == 0 ? formatoDeseado : baseNueva;
+
     }
 
 }

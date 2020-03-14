@@ -2,11 +2,13 @@ package GUI;
 
 import Logica.Automata;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JPanel;
 
-public class PanelDibujo extends JPanel {
+public class PanelDibujo extends JPanel implements Runnable {
 
     public static Color COLOR_0 = new Color(125, 125, 125);//gris
     public static Color COLOR_1 = new Color(46, 217, 71);//verde
@@ -14,22 +16,83 @@ public class PanelDibujo extends JPanel {
     public static Color COLOR_3 = new Color(86, 137, 219);//Azul
     public static Color COLOR_4 = new Color(212, 230, 18);//amarillo
 
+    public boolean run = false;
+    public boolean pintar = false;
+    ColorRGB color;
+    public int time;
+
     public PanelDibujo() {
 
         setBackground(Color.CYAN);
+        new Thread(this).start();
+        color = ColorRGB.aleatorio();
     }
 
     Automata instrumento;
+    int iterador = 0;
+
+    public void cambiarSecuencia() {
+
+        if (iterador == instrumento.Matriz.length) {
+            iterador = 0;
+        }
+        for (int i = 0; i < instrumento.Matriz.length; i++) {
+            String vecinos = vecinos(iterador, i);
+        }
+
+    }
+
+    public void run2() {
+        String[] M = instrumento.Matriz;
+        String nueva = "";
+        if (iterador == M.length - 1) {
+            M[0] = M[M.length - 1];
+            iterador = 0;
+        }
+
+        for (int i = 0; i < M.length; i++) {
+
+            nueva += instrumento.mapRegla.get(vecinos(iterador, i));
+            // System.out.println("cambia: " + vecinos(iterador, i) + " a " + instrumento.mapRegla.get(vecinos(iterador, i)));
+        }
+        //  System.out.println("final " + nueva);
+        M[iterador + 1] = nueva;
+        iterador++;
+
+    }
+
+    public String vecinos(int i, int j) {
+
+        String anterior = "";
+        String siguiente = "";
+
+        if (j == 0) {
+            anterior = instrumento.Matriz[i].charAt(instrumento.Matriz.length - 1) + "";
+            siguiente = instrumento.Matriz[i].charAt(1) + "";
+        } else if (j == instrumento.Matriz.length - 1) {
+            anterior = instrumento.Matriz[i].charAt(instrumento.Matriz.length - 2) + "";
+            siguiente = instrumento.Matriz[i].charAt(0) + "";
+
+        } else {
+            anterior = instrumento.Matriz[i].charAt(j - 1) + "";
+            siguiente = instrumento.Matriz[i].charAt(j + 1) + "";
+        }
+
+        return anterior + instrumento.Matriz[i].charAt(j) + siguiente;
+    }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setColor(color.Retornarse());
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        g.setColor(Color.black);
         if (instrumento != null) {
 
-            for (int j = 0; j < instrumento.vectorInicial.length(); j++) {
+            for (int j = 0; j < instrumento.Matriz.length; j++) {
 
-                for (int i = 0; i < instrumento.vectorInicial.length(); i++) {
-                    char caracter = instrumento.vectorInicial.charAt(i);
+                for (int i = 0; i < instrumento.Matriz[j].length(); i++) {
+                    char caracter = instrumento.Matriz[j].charAt(i);
 
                     switch (caracter) {
                         case '0':
@@ -55,42 +118,29 @@ public class PanelDibujo extends JPanel {
 
                 }
             }
+
         } else {
 
+        }
+
+        if (run && pintar) {
+            pintar = false;
+            run2();
         }
 
         repaint();
     }
 
-    /*  public void pintarMatriz(Graphics g, int[][] A, int xinicial, int yinicial, Color color) {
-        g.setColor(color);
-        for (int i = 0; i < A.length; i++) {
+    @Override
+    public void run() {
+        while (true) {
 
-            for (int j = 0; j < A[i].length; j++) {
-                for (int k = 0; k < ReglaAudio.length; k++) {
-                    if (ReglaAudio[k] == j) {
-                        g.setFont(new Font("Arial", 0, 8));
-                        g.setColor(Color.black);
-                        g.drawString(j + "", xinicial + (8 * j), 100);
-                    }
-                }
-                g.setFont(new Font("Arial", 0, 18));
-                if (true) {
-                    if (A[i][j] == 1) {
-                        g.setColor(Color.black);
-
-                    } else {
-                        g.setColor(Color.white);
-                    }
-                } else {
-                    g.setColor(ColorMatriz[A[i][j]]);
-                }
-
-                g.drawString("■", xinicial + (j * 8), yinicial + (8 * i));
+            try {
+                Thread.sleep(time);
+                pintar = true;
+            } catch (InterruptedException ex) {
 
             }
-
         }
-
-    }*/
+    }
 }
