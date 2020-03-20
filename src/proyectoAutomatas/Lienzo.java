@@ -1,6 +1,5 @@
-package GUI;
+package proyectoAutomatas;
 
-import Logica.Automata;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.logging.Level;
@@ -8,7 +7,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JPanel;
 
-public class PanelDibujo extends JPanel implements Runnable {
+public class Lienzo extends JPanel implements Runnable {
 
     public static Color COLOR_0 = new Color(125, 125, 125);//gris
     public static Color COLOR_1 = new Color(46, 217, 71);//verde
@@ -22,14 +21,14 @@ public class PanelDibujo extends JPanel implements Runnable {
     ColorRGB color;
     public int time;
 
-    public PanelDibujo() {
+    public Lienzo() {
 
         setBackground(Color.CYAN);
         new Thread(this).start();
         color = ColorRGB.aleatorio();
     }
 
-    Automata instrumento;
+    Instrumento instrumento;
     int iterador = 0;
 
     public int calcularNota() {
@@ -74,7 +73,7 @@ public class PanelDibujo extends JPanel implements Runnable {
 
     public void sacarAudio(int j) {
         System.out.println(j);
-        instrumento.Sonando2[j].play();
+        instrumento.Sonando[j].play();
     }
 
     public String vecinos(int i, int j) {
@@ -103,6 +102,7 @@ public class PanelDibujo extends JPanel implements Runnable {
         g.setColor(color.Retornarse());
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.setColor(Color.black);
+      
         if (instrumento != null) {
 
             for (int j = 0; j < instrumento.Matriz.length; j++) {
@@ -154,6 +154,7 @@ public class PanelDibujo extends JPanel implements Runnable {
             try {
                 Thread.sleep(this.time);
                 pintar = true;
+               
             } catch (InterruptedException ex) {
 
             }

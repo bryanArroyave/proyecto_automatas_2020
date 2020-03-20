@@ -1,13 +1,14 @@
-package Logica;
+package proyectoAutomatas;
 
 import java.applet.AudioClip;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import javax.swing.JComboBox;
+
 import javax.swing.JOptionPane;
 
-public class Automata {
+public class Instrumento {
 
     public String instrumento;
     int numeroEstados;
@@ -23,18 +24,16 @@ public class Automata {
     public String vectorInicial;
     public String vectorRegla;
 
-    public AudioClip[] Sonando2;
     public AudioClip[] Sonando;
     public String notaActual = "NA";
 
-    public Automata(String instrumento, int numeroEstados, int numeroTrancisiones, int posibilidades) {
+    public Instrumento(String instrumento, int numeroEstados, int numeroTrancisiones, int posibilidades) {
         this.instrumento = instrumento;
         this.numeroEstados = numeroEstados;
         this.numeroTrancisiones = numeroTrancisiones;
         this.posibilidades = posibilidades;
         this.Campos = new JComboBox[this.numeroTrancisiones];
-        this.Sonando = new AudioClip[numeroTrancisiones];
-        this.llenarSonando2();
+        this.llenarSonando();
         this.CrearVectorTexto();
     }
 
@@ -49,8 +48,8 @@ public class Automata {
 
     }
 
-    public void llenarSonando2() {
-        Sonando2 = new AudioClip[10];
+    public void llenarSonando() {
+        Sonando = new AudioClip[10];
 
         conversorNota = new HashMap<>();
         conversorNota.put(0, "do");
@@ -64,16 +63,16 @@ public class Automata {
         conversorNota.put(8, "do");
         conversorNota.put(9, "do");
         try {
-            Sonando2[0] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
-            Sonando2[1] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
-            Sonando2[2] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_re" + ".wav"));
-            Sonando2[3] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_mi" + ".wav"));
-            Sonando2[4] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_fa" + ".wav"));
-            Sonando2[5] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_sol" + ".wav"));
-            Sonando2[6] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_la" + ".wav"));
-            Sonando2[7] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_si" + ".wav"));
-            Sonando2[8] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
-            Sonando2[9] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+            Sonando[0] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+            Sonando[1] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+            Sonando[2] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_re" + ".wav"));
+            Sonando[3] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_mi" + ".wav"));
+            Sonando[4] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_fa" + ".wav"));
+            Sonando[5] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_sol" + ".wav"));
+            Sonando[6] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_la" + ".wav"));
+            Sonando[7] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_si" + ".wav"));
+            Sonando[8] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
+            Sonando[9] = java.applet.Applet.newAudioClip(getClass().getResource("/Musica/" + instrumento + "/" + "_do" + ".wav"));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "no se encontro el instrumento " + instrumento);
         }

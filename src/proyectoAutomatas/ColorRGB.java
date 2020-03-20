@@ -1,5 +1,5 @@
 
-package GUI;
+package proyectoAutomatas;
 
 import java.awt.Color;
 import javax.swing.JColorChooser;
